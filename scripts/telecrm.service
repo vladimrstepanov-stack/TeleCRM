@@ -1,0 +1,16 @@
+[Unit]
+Description=TeleCRM Telegram bot
+After=network.target mysql.service
+Wants=mysql.service
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/opt/telecrm
+Environment=PYTHONUNBUFFERED=1
+ExecStart=/opt/telecrm/.venv/bin/python -m app.main
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
